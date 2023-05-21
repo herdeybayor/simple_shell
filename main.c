@@ -1,9 +1,13 @@
 #include "shell.h"
 
-int main()
+/**
+ * main - Entry point
+ * Return: 0 on success
+ */
+int main(void)
 {
-    prompt("$ ");
-    _putchar('\n');
+	prompt("$ ");
+	_putchar('\n');
 
-    return (0);
+	return (0);
 }

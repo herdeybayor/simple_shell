@@ -6,5 +6,4 @@
 
 int _putchar(char c);
 void prompt(char *c);
-
 #endif
