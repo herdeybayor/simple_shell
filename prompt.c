@@ -13,3 +13,21 @@ void prompt(char *c)
 		c++;
 	}
 }
+
+/**
+ * str_len - prints a prompt
+ * @s: character argument
+ * Return: void
+ */
+int str_len(char *s)
+{
+	int i = 0;
+
+	while (*s >= 32 && *s <= 126)
+	{
+		i++;
+		s++;
+	}
+
+	return (i);
+}

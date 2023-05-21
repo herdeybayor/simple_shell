@@ -6,10 +6,11 @@
  */
 int main(void)
 {
-	char *command = NULL;
+	char *command = (char *)malloc(sizeof(char) * 1024);
 
 	prompt("$ ");
-	read(0, command, 1024);
+	read(STDIN_FILENO, command, 1024);
+	command[str_len(command)] = '\0';
 	prompt(command);
 	_putchar('\n');
 
