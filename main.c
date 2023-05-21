@@ -6,7 +6,11 @@
  */
 int main(void)
 {
+	char *command = NULL;
+
 	prompt("$ ");
+	read(0, command, 1024);
+	prompt(command);
 	_putchar('\n');
 
 	return (0);
