@@ -2,7 +2,7 @@
 
 int main()
 {
-    _putchar('Z');
+    prompt("$ ");
     _putchar('\n');
 
     return (0);
