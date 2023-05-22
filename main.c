@@ -4,7 +4,6 @@
  * main - prints a prompt
  * @argc: argument count
  * @argv: argument vector
- * @envp: environment variables
  * Return: 0 on success
  */
 int main(int argc, char *argv[])
