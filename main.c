@@ -7,24 +7,36 @@
  * @envp: environment variables
  * Return: 0 on success
  */
-int main(int argc, char *argv[], char *envp[])
+int main(int argc, char *argv[])
 {
 	char *command = (char *)malloc(sizeof(char) * 1024);
-	int i;
+	char path_env[1024];
 
-	prompt("$ ");
+	prompt("($) ");
 	read(STDIN_FILENO, command, 1024);
 	command[str_len(command)] = '\0';
 	prompt(command);
 	_putchar('\n');
 
-	for (i = 0; envp[i] != NULL; i++)
-		printf("Environment variable %d: %s\n", i, envp[i]);
+	printf("argc: %d\n", argc);
+	getcwd(path_env, sizeof(path_env));
+	printf("path: %s\n", path_env);
 
-	while (argc--)
-		printf("%s\n", *argv++);
+	shell_error(argv[0], command);
 
-	free(command);
+	/* main loop of the program */
+	while (1)
+	{
+		prompt("($) ");
+		read(STDIN_FILENO, command, 1024);
+		command[str_len(command)] = '\0';
+
+		if (str_cmp(command, "exit") == 0)
+		{
+			free(command);
+			exit(0);
+		}
+	}
 
 	return (0);
 }
