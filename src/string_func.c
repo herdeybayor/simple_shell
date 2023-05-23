@@ -1,20 +1,6 @@
 #include "../include/shell.h"
 
 /**
- * prompt - prints a prompt
- * @c: character argument
- * Return: void
- */
-void prompt(char *c)
-{
-	while (*c != '\0')
-	{
-		_putchar(*c);
-		c++;
-	}
-}
-
-/**
  * str_len - prints a prompt
  * @s: character argument
  * Return: void
@@ -30,17 +16,6 @@ int str_len(char *s)
 	}
 
 	return (i);
-}
-
-/**
- * shell_error - prints a prompt
- * @program_path: character argument
- * Return: void
- */
-void shell_error(char *program_path)
-{
-	prompt(program_path);
-	prompt(": No such file or directory\n");
 }
 
 /**
