@@ -38,12 +38,10 @@ int str_len(char *s)
  * @command: character argument
  * Return: void
  */
-void shell_error(char *program_path, char *command)
+void shell_error(char *program_path)
 {
 	prompt(program_path);
-	prompt(": 1: ");
-	prompt(command);
-	prompt(": not found\n");
+	prompt(": No such file or directory\n");
 }
 
 /**
