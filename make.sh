@@ -1,1 +1,1 @@
-gcc -Wall -pedantic -Werror -Wextra -std=gnu89 *.c -o shell
+gcc -Wall -pedantic -Werror -Wextra -std=gnu89 src/*.c -o shell
