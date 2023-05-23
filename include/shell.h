@@ -14,4 +14,6 @@ int str_cmp(char *s1, char *s2);
 int run(char *command, char *argv[], char *env_args[]);
 int execute(char *command, char *argv[], char *env_args[]);
 int interactive(char *command, char *argv[], char *env_args[]);
+int str_includes(char *s1, char *s2);
+char *str_concat(char *s1, char *s2);
 #endif

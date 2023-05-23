@@ -9,7 +9,23 @@
  */
 int run(char *command, char *argv[], char *env_args[])
 {
-	execve(command, argv, env_args);
+	/* Check if command starts with "/bin/"	*/
+	char *path = "/bin/";
+
+	if (str_includes(command, path))
+	{
+		/* If it does, run the command */
+		execve(command, argv, env_args);
+	}
+	else
+	{
+		/* If it doesn't, concatenate "/bin/" to the command */
+		char *new_command = str_concat(path, command);
+
+		/* Run the command */
+		execve(new_command, argv, env_args);
+	}
+
 	shell_error(*argv);
 	free(command);
 	exit(EXIT_FAILURE);
@@ -63,7 +79,7 @@ int interactive(char *command, char *argv[], char *env_args[])
 			exit(EXIT_SUCCESS);
 		}
 		/* fork child process */
-		if(!execute(command, argv, env_args))
+		if (!execute(command, argv, env_args))
 			continue;
 		break;
 	}
