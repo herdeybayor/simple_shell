@@ -2,7 +2,7 @@
 CC = gcc
 
 # SRC specifies the .c files
-SRC = src/main.c src/_putchar.c \
+SRC = src/main.c src/_putchar.c src/core.c \
 	src/prompt.c
 
 # OBJ specifies the .o files
@@ -42,3 +42,6 @@ fclean: clean oclean
 
 # This rule forces recompilation of all source files
 re: fclean all
+
+# Customized rule to make a clean build without excess files
+cleanbuild: oclean all

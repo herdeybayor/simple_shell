@@ -8,7 +8,7 @@ make
 or
 
 ```bash
-make all oclean
+make oclean all
 ```
 
 or

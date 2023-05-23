@@ -35,7 +35,6 @@ int str_len(char *s)
 /**
  * shell_error - prints a prompt
  * @program_path: character argument
- * @command: character argument
  * Return: void
  */
 void shell_error(char *program_path)
