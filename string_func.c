@@ -1,4 +1,4 @@
-#include "../include/shell.h"
+#include "shell.h"
 
 /**
  * str_len - prints a prompt

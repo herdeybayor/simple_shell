@@ -2,8 +2,8 @@
 CC = gcc
 
 # SRC specifies the .c files
-SRC = src/main.c src/_putchar.c src/core.c src/core_func.c\
-	src/string_func.c
+SRC = main.c _putchar.c core.c core_func.c\
+	string_func.c
 
 # OBJ specifies the .o files
 OBJ = $(SRC:.c=.o)
@@ -26,7 +26,7 @@ CFLAGS = -Wall -Werror -Wextra -pedantic -std=gnu89
 
 # This rule builds our executable
 # Makefile should not compile if the header file main.h is missing
-all: include/shell.h $(OBJ)
+all: shell.h $(OBJ)
 	$(CC) $(OBJ) $(CFLAGS) -o $(NAME)
 
 # This rule deletes all Emacs and Vim temporary files along with the executable
