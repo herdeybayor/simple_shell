@@ -1,39 +1,44 @@
 #include "shell.h"
 
 /**
- * main - prints a prompt
- * @argc: argument count
- * @argv: argument vector
- * Return: 0 on success
+ * main - entry point
+ * @ac: arg count
+ * @av: arg vector
+ *
+ * Return: 0 on success, 1 on error
  */
-int main(int argc, char *argv[])
+int main(int ac, char **av)
 {
-	size_t size = 1024;
-	char *command = (char *)malloc(sizeof(char) * size);
-	char path_env[1024], *env_args[] = {(char *)0};
+	info_t info[] = { INFO_INIT };
+	int fd = 2;
 
-	while (argc--)
-		printf("%s\n", argv[argc]);
-	/* argc not in use */
-	/* (void)argc; */
+	asm ("mov %1, %0\n\t"
+		"add $3, %0"
+		: "=r" (fd)
+		: "r" (fd));
 
-	getcwd(path_env, sizeof(path_env));
-	/* printf("CWD = %s\n\n", path_env); */
-
-	/* check if the shell is non-interactive */
-	if (!isatty(STDIN_FILENO))
+	if (ac == 2)
 	{
-		getline(&command, &size, stdin);
-		command[str_len(command)] = '\0';
-		execve(command, argv, env_args);
-		shell_error(argv[0]);
-		exit(0);
-	} else
-	{
-		interactive(command, argv, env_args);
+		fd = open(av[1], O_RDONLY);
+		if (fd == -1)
+		{
+			if (errno == EACCES)
+				exit(126);
+			if (errno == ENOENT)
+			{
+				_eputs(av[0]);
+				_eputs(": 0: Can't open ");
+				_eputs(av[1]);
+				_eputchar('\n');
+				_eputchar(BUF_FLUSH);
+				exit(127);
+			}
+			return (EXIT_FAILURE);
+		}
+		info->readfd = fd;
 	}
-
-	free(command);
-
-	return (0);
+	populate_env_list(info);
+	read_history(info);
+	hsh(info, av);
+	return (EXIT_SUCCESS);
 }
