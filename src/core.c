@@ -67,12 +67,15 @@ int execute(char *command, char *argv[], char *env_args[])
  */
 int interactive(char *command, char *argv[], char *env_args[])
 {
+	char *delim = " \t\n\r";
+
 	/* main process */
 	while (1)
 	{
 		prompt(":) ");
 		read(0, command, 1024);
 		command[str_len(command)] = '\0';
+		argv = tokenize(command, delim);
 		if (!str_cmp(command, "exit"))
 		{
 			free(command);

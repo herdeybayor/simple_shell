@@ -1,1 +1,2 @@
-gcc -Wall -pedantic -Werror -Wextra -std=gnu89 src/*.c -o shell
+#!/bin/bash
+gcc -Wall -pedantic -Werror -Wextra -std=gnu89 src/*.c -o hsh

@@ -12,8 +12,10 @@ int main(int argc, char *argv[])
 	char *command = (char *)malloc(sizeof(char) * size);
 	char path_env[1024], *env_args[] = {(char *)0};
 
+	while (argc--)
+		printf("%s\n", argv[argc]);
 	/* argc not in use */
-	(void)argc;
+	/* (void)argc; */
 
 	getcwd(path_env, sizeof(path_env));
 	/* printf("CWD = %s\n\n", path_env); */

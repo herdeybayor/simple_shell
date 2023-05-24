@@ -96,3 +96,28 @@ int str_includes(char *s1, char *s2)
 
 	return (0);
 }
+
+/**
+ * tokenize - prints a prompt
+ *
+ * @str: the string to be tokenized
+ * @delim: the delimiters to tokenize the string
+ * Return: An array of strings (tokens)
+ */
+char **tokenize(char *str, char *delim)
+{
+	char **tokens = (char **)malloc(1024 * sizeof(char *));
+	char *token;
+	int i = 0;
+
+	token = strtok(str, delim);
+	while (token != NULL)
+	{
+		*(tokens + i) = token;
+		token = strtok(NULL, delim);
+		i++;
+	}
+	*(tokens + i) = NULL;
+
+	return (tokens);
+}

@@ -2,3 +2,6 @@
 *.tmp
 ~*
 *.exe
+.vscode/*
+main
+shell
